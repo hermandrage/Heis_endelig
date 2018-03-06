@@ -29,7 +29,6 @@ void set_floor_variables(void){
   if (temp_get_floor > -1 && temp_get_floor < N_FLOORS){
     current_floor = temp_get_floor;
   }
-  //printf("current_floor: %d\n", current_floor );
 }
 
 
@@ -55,16 +54,11 @@ void run_states(void){
   while (1){
 
   	next_order = read_next_order();
-  	//print_status();
-      //printf("%d\n",current_state );
       switch (current_state){
         case IDLE: // HER STARTER STATEN
-        //printf("%d" , current_direction);
-        //printf("Entered IDLE\n");
         if (current_direction!=DIRN_STOP){//Stopper heisen
           current_direction=DIRN_STOP;
         }
-        //reads next order and sets current_state
         next_order = read_next_order();
         if (next_order== -1){
         }
@@ -80,39 +74,13 @@ void run_states(void){
           current_state=DOOR_OPEN;
           print_que();
         }
-        /*else if (next_order - get_current_floor() ==0 && elev_get_floor_sensor_signal()==-1){
-
-          if(get_dir_before_stopped()==DIRN_UP){
-
-            set_current_state(DRIVE_DOWN);
-            while(1){
-            printf("DRIVE_DOWN");
-          }
-          }
-          if(get_dir_before_stopped()==DIRN_DOWN){
-            set_current_state(DRIVE_UP);
-            while(1){
-            printf("DRIVE_UP");
-          }
-          }*/
-        //}
-        /*else if(next_order - get_current_floor() ==0 && elev_get_floor_sensor_signal()==-1 && get_var_just_been_stopped()==1){
-          if (get_direction_before_stopped()==DIRN_DOWN){
-            set_current_state(DRIVE_DOWN);
-          }
-          else if(get_direction_before_stopped()==DIRN_UP){
-            set_current_state(DRIVE_UP);
-          }
-        }*/
-        //set_var_just_been_stopped(0);
         read_all_buttons();
         update_all_lights();
         break;
         //////////------------------------------------------------------------------------------------
 
         case DOOR_OPEN:// HER STARTER STATEN
-        //printf("%d" , current_direction);
-        //printf("Entered DOOR_OPEN\n");
+        
         if (current_direction!=DIRN_STOP){//Stopper heisen
           current_direction=DIRN_STOP;
           elev_set_motor_direction(DIRN_STOP);
@@ -128,9 +96,7 @@ void run_states(void){
         		delete_order_from_que(0);
         	}
         	elev_set_door_open_lamp(0);
-        	//while(1){
-        	//	printf("DOOR SHOULD CLOSE NOW");
-        	//}
+       
         	if (next_order== -1){
         		current_state=IDLE;
             print_que();
@@ -147,25 +113,13 @@ void run_states(void){
 
 
         }
-        /////
-        /*else if (next_order - get_current_floor() <0){
-        	current_state=DRIVE_DOWN;
-        }
-        else if (next_order - get_current_floor() >0){
-          	current_state=DRIVE_UP;
-          }
-          */
+      
         read_all_buttons();
         update_all_lights();
-       // while(1){
-       // 	printf("entered door_open");
-       // }
         break;
         //////////------------------------------------------------------------------------------------
 
         case DRIVE_UP: // HER STARTER STATEN
-        //printf("%d" , current_direction);
-        //printf("Entered DRIVE_UP\n");
         if (current_direction!=DIRN_UP){//Setter riktig retning
           current_direction=DIRN_UP;
           elev_set_motor_direction(DIRN_UP);
@@ -189,8 +143,6 @@ void run_states(void){
         //////////------------------------------------------------------------------------------------
 
         case DRIVE_DOWN:// HER STARTER STATEN
-        //printf("%d" , current_direction);
-        //printf("Entered DRIVE_DOWN\n");
         if (current_direction!=DIRN_DOWN){
           current_direction=DIRN_DOWN;
           elev_set_motor_direction(DIRN_DOWN);
@@ -212,30 +164,6 @@ void run_states(void){
         read_all_buttons();
         update_all_lights();
         break;
-        /*case STOPPED:
-        next_order=read_next_order();
-        printf("next order: %d", read_next_order());
-        printf("\n");
-        if (next_order!=-1){
-          printf("driving up\n");
-          elev_set_motor_direction(DIRN_UP);
-          while( elev_get_floor_sensor_signal()==-1){
-          }
-          elev_set_motor_direction(DIRN_STOP);
-          set_current_direction(DIRN_STOP);
-          set_floor_variables();
-          if (next_order - get_current_floor() <0){
-            current_state=DRIVE_DOWN;
-          }
-          else if (next_order - get_current_floor() >0){
-            current_state=DRIVE_UP;
-
-          }
-
-        }
-        read_all_buttons();
-        update_all_lights();
-        break;*/
   }
 }
 }

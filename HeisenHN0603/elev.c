@@ -158,10 +158,6 @@ void elev_set_floor_indicator(int floor) {
 }
 //Denna funksjonen har me laga sjøv:)
 int elev_get_floor_indicator_matrix(int etasje){
-  //printf("etasje1 %d\n", floor_indicator_lights_matrix[0]);
-  //printf("etasje2 %d\n", floor_indicator_lights_matrix[1]);
-  //printf("etasje3 %d\n", floor_indicator_lights_matrix[2]);
-  //printf("etasje4 %d\n", floor_indicator_lights_matrix[3]);
   return floor_indicator_lights_matrix[etasje];
 }
 int get_lamp_channel_matrix(int floor, elev_button_type_t button){
@@ -174,24 +170,6 @@ void set_current_direction(elev_motor_direction_t dir){
   current_direction=dir;
 }
 
-
-/*elev_motor_direction_t direction_before_stopped=DIRN_STOP;
-void set_direction_before_stopped(elev_motor_direction_t dir){
-  direction_before_stopped=dir;
-}
-int get_direction_before_stopped(void){
-  return direction_before_stopped;
-}
-
-
-int var_just_been_stopped=0;
-void set_var_just_been_stopped(int active){
-  var_just_been_stopped=active;
-}
-int get_var_just_been_stopped(void){
-  return var_just_been_stopped;
-}*/
-//
 int elev_get_button_signal(elev_button_type_t button, int floor) {
     assert(floor >= 0);
     assert(floor < N_FLOORS);

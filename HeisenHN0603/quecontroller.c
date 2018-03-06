@@ -8,11 +8,7 @@
 
 
 const int Number_of_floors=4;
-//case init
 
-//case running
-
-//case stopped
 const int nr_possible_orders=Number_of_floors+(2*(Number_of_floors-1));
 //Køen vår:)
 static int que[nr_possible_orders][2];

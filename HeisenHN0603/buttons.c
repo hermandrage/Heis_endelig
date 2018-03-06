@@ -37,9 +37,6 @@ void read_stop_button(void){
   if (elev_get_stop_signal()){
     elev_set_stop_lamp(1);
     empty_que();
-    //set_direction_before_stopped(get_current_direction());
-    printf("\n %d" , current_direction);
-    set_dir_before_stopped(current_direction);
     elev_set_motor_direction(DIRN_STOP);
     set_current_direction(DIRN_STOP);
     update_all_lights();
@@ -54,8 +51,6 @@ void read_stop_button(void){
       set_current_state(IDLE);
     }
     elev_set_stop_lamp(0);
-    //set_var_just_been_stopped(1);
-
   }
 }
 

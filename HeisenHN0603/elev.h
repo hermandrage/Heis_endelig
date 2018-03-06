@@ -31,11 +31,6 @@ static elev_motor_direction_t current_direction;
 
 int get_current_direction(void);
 void set_current_direction(elev_motor_direction_t dir);
-/*int get_var_just_been_stopped(void);
-void set_var_just_been_stopped(int active);
-int get_direction_before_stopped(void);
-void set_direction_before_stopped(elev_motor_direction_t dir);
-*/
 
 /**
   Sets the motor direction of the elevator.
